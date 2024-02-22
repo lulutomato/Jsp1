@@ -34,6 +34,8 @@
 	pageContext.setAttribute("list",list);
 %>
 	<table>
+	<!-- el 기호에서 지정된 이름 list 애트리뷰트를 가져오는 동작 :
+					pageContext.getAttribute(list);실행 -->
 	<tr>
 		
 		<th>인덱스</th>
@@ -47,12 +49,12 @@
 	<tr>
 		
 		<td><c:out value = "${status.index + 1 }"/></td>
-		<td><c:out value = "${fn:toUpperCase(vo.customId)}"/></td>
+		<td><c:out value = "${fn:toUpperCase(vo.customId)}"/></td> <!--function은 el 안에다가 쓴다  -->
 		
 		<td><c:out value = "${vo.name }"/></td>
 		<td><c:out value = "${vo.email }"/></td>
 		<td><c:out value = "${vo.age }"/></td>
-		<td><fmt:formatDate value = "${vo.reg_date }" pattern="yyyy-MM-dd a hh:mm:ss"/></td>
+		<td><fmt:formatDate value = "${vo.reg_date }" pattern="yyyy-MM-dd a hh:mm:ss"/></td><!--날짜 fmt -->
 	</tr>
 </c:forEach>
 </table>
