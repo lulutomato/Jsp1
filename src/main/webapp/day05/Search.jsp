@@ -21,7 +21,7 @@
 <option value = "${cate.code}"><c:out value="${cate.name }"/></option>  <!--for문  -->
 </c:forEach>
 </select>
-<input type = "text" name= "keyword" placeholder = "상품명 검색어 입력하세요." value = "">
+<input type = "text" name= "keyword" placeholder = "상품명 검색어 입력하세요." value = "${keyword }">
 <span style="padding-left: 10px;">가격대별</span>
 <input type="text" name="from" placeholder="10000" value = ""><b>~</b>
 <input type="text" name="to" placeholder="50000" value = "">
@@ -39,7 +39,9 @@
 	<li><c:out value = "${vo.pcode }"/></li>
 	<li><c:out value = "${vo.category }"/></li>
 	<li><c:out value = "${vo.pname }"/></li>
-	<li><c:out value = "${vo.price }"/></li>
+	<li style="text-align: right;">
+	<fmt:formatNumber value = "${vo.price }"></fmt:formatNumber>
+	</li>
 
 
 	</ul>
@@ -47,6 +49,13 @@
 
 </c:forEach>
 </ul>
-<script type="text/javascript" src = "assets/js/search.js"></script>
+<script type ="text/javascript">
+//js 파일에서는 서버 애트리뷰트를 가져올 수 없습니다.
+//   jsp 파일안에 있는 script 태그에서만 가능합니다.
+const temp = '${cate}'
+</script>
+<!-- temp 변수값은 search.js 와 공유합니다. -->
+<script type="text/javascript" src ="assets/js/search.js"></script>
+
 </body>
 </html>

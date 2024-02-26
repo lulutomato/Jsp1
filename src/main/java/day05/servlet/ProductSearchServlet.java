@@ -38,9 +38,11 @@ public class ProductSearchServlet extends HttpServlet {
 		Map<String, Object>map = new HashMap<>();
 		if(category != null && category.length() !=0) {
 			map.put("category", category);
+			req.setAttribute("cate", category); // 애트리뷰트 이름은 자바스크립트에서 사용 가능합니다
 		}
 		if(keyword != null && keyword.length() !=0) {
 			map.put("keyword", keyword.trim());
+			req.setAttribute("keyword", keyword);
 		}
 		if(from != null && from.length() !=0 && to !=null && to.length() !=0) {
 			map.put("from", from.trim());
