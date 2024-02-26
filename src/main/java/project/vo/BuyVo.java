@@ -5,8 +5,8 @@ import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 @Getter
 @ToString
 @AllArgsConstructor
@@ -17,6 +17,7 @@ public class BuyVo {
 	private String pcode;
 	private int quantity;
 	private Date buyDate;
+	
 }
 //필드값이 모두 값으면 equals 로 true 가 되도록 하고싶다.
 //-> equals 와 hashcode 를 재정의해야 합니다. (vo 객체)

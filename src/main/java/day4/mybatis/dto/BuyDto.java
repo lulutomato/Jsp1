@@ -21,10 +21,18 @@ import lombok.ToString;
 
 public class BuyDto {
 	private int buy_Idx;
-	private String customid;
 	private String pcode;
+	private String pname;
+	private int price;
 	private int quantity;
 	private Date buy_Date;
+	private String customid;
 	
-
+	public BuyDto(int buy_Idx,String customid,String pname,int quantity,Date buy_date){	
+	this.buy_Idx = buy_Idx;
+	this.customid = customid;
+	this.pname = pname;
+	this.quantity = quantity;
+	this.buy_Date = buy_date;
+}
 }

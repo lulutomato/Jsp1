@@ -1,9 +1,12 @@
 package day4.mybatis.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+
+import day4.mybatis.dto.CateDto;
 import day4.mybatis.dto.ProductDto;
 import mybatis.SqlSessionBean;
 
@@ -17,6 +20,15 @@ public class MybatisProductDao {
 		sqlSession.close();
 		return list;
 		}
+	
+	public List<ProductDto> search(Map<String,Object>map){
+		SqlSession sqlSession = sessionFactory.openSession();
+		List<ProductDto> list = sqlSession.selectList("tblproduct.search",map);
+		sqlSession.close();
+		return list;
+	}
+	
+	
 	public int insert(ProductDto dto) {
 		SqlSession sqlSession = sessionFactory.openSession();
 		int result = sqlSession.insert("tblproduct.insert",dto);
@@ -30,11 +42,11 @@ public class MybatisProductDao {
 		sqlSession.close();
 		return list2;
 	}
-	public List<ProductDto> selectByPname(String pname){
+	public ProductDto selectByPname(String pname){
 		SqlSession sqlSession = sessionFactory.openSession();
-		List<ProductDto> list3 = sqlSession.selectList("tblproduct.selectByPname");
+		ProductDto dto  = sqlSession.selectOne("tblproduct.selectByPname",pname);
 		sqlSession.close();
-		return list3;
+		return dto;
 	}
 	public int delete (String pname) {
 		SqlSession sqlSession = sessionFactory.openSession();
@@ -44,7 +56,12 @@ public class MybatisProductDao {
 		return result;
 	}
 	
-	
+	  public List<CateDto> getCategories(){
+	    	SqlSession sqlSession = sessionFactory.openSession();
+	    	List<CateDto> list = sqlSession.selectList("tblproduct.getCategories");
+	    	sqlSession.close();
+	    	return list;
+	    }
 	
 	
 	
